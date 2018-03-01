@@ -7,10 +7,15 @@ public class BroomPlayerController : MonoBehaviour {
 	public float speed= 40;
 	Vector2 TouchCoords;
 	CharacterController controller;
-
+	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
-		controller = GetComponent<CharacterController> (); 		
+		if (GetComponent<Rigidbody> ()) {
+			rBody = GetComponent <Rigidbody> ();
+		} 
+		else {
+			Debug.LogError ("Object needs to have RigidBody Attached with all the rotation constraints enabled");
+		}
 	
 	}
 
@@ -27,11 +32,11 @@ public class BroomPlayerController : MonoBehaviour {
 			Vector3 Player_forward = Camera.main.transform.forward;
 			Vector3 Player_right = Camera.main.transform.right;
 
-			controller.Move (TouchCoords.y * Player_forward * speed*Time.deltaTime);
-			controller.Move (TouchCoords.x * Player_right * speed*Time.deltaTime);
+		//	controller.Move (TouchCoords.y * Player_forward * speed*Time.deltaTime);
+		//	controller.Move (TouchCoords.x * Player_right * speed*Time.deltaTime);
 
-	//		rBody.velocity = TouchCoords.y * Player_forward * speed;
-	//		rBody.velocity += TouchCoords.x * Player_right * speed; 
+			rBody.velocity = TouchCoords.y * Player_forward * speed;
+			rBody.velocity += TouchCoords.x * Player_right * speed; 
 
 		} else {
 			//TouchCoords = new Vector2();

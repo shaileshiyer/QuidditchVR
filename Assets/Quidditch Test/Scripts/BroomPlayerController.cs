@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BroomPlayerController : MonoBehaviour {
 
-	public float speed= 40;
+	public float speed = 40;
 	Vector2 TouchCoords;
 	CharacterController controller;
 	Rigidbody rBody;
@@ -36,13 +36,13 @@ public class BroomPlayerController : MonoBehaviour {
 		//	controller.Move (TouchCoords.x * Player_right * speed*Time.deltaTime);
 
 			rBody.velocity = TouchCoords.y * Player_forward * speed;
-			rBody.velocity += TouchCoords.x * Player_right * speed; 
+			rBody.velocity += TouchCoords.x * Player_right * speed;
 
 		} else {
 			//TouchCoords = new Vector2();
 		}
 
-		Debug.Log ("Tranform.forward" + transform.forward+"Transform.right"+transform.right);
+		//Debug.Log ("Tranform.forward" + transform.forward+"Transform.right"+transform.right);
 
 		//Debug.Log(TouchCoords+" velocity = "+rBody.velocity);
 	}

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 01a06719e43f9704f93f1d4054cb32b5
-timeCreated: 1519906278
+guid: 3ebd5d8b64f911b418f82365e4e92940
+timeCreated: 1519978636
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -12,7 +12,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cone.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree base clor
+    second: {fileID: 2100000, guid: 3f1bfa0388b0d59499d73c660ed0932f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree green.001
+    second: {fileID: 2100000, guid: f1cadf9eccda09647af10611cf2c00ae, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -42,7 +52,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -50,7 +60,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -61,7 +71,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

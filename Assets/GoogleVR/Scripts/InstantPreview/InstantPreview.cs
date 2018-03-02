@@ -158,7 +158,7 @@ namespace Gvr.Internal {
       var sb = new StringBuilder(256);
       GetVersionString(sb, (uint)sb.Capacity);
       var localVersionName = sb.ToString();
-      Debug.Log("Instant Preview Version: " + localVersionName);
+      //Debug.Log("Instant Preview Version: " + localVersionName);
 
       // Tries to install Instant Preview apk if set to do so.
       if (InstallApkOnRun) {

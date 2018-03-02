@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Quidditch Test/TestScene.unity
-    guid: fa521c5a0d74bbc4d97feb8a50209b60
+    path: Assets/Quidditch Test/Scene/CastleTerrain.unity
+    guid: 10fe55acb9dfea24892e6190fd8914cd

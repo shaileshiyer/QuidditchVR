@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class BroomPlayerController : MonoBehaviour {
 
-	public float speed= 40;
+	public float speed = 40;
 	Vector2 TouchCoords;
 	CharacterController controller;
 	Rigidbody rBody;
-	// Use this for initialization
+
+    // Use this for initialization
 	void Start () {
 		if (GetComponent<Rigidbody> ()) {
 			rBody = GetComponent <Rigidbody> ();
-		} 
-		else {
+		} else {
 			Debug.LogError ("Object needs to have RigidBody Attached with all the rotation constraints enabled");
 		}
-	
 	}
 
-	void GetInput(){
-
+	void GetInput () {
 		//heightInput = Input.GetAxis ("Vertical");
 		//turnInput = Input.GetAxis ("Horizontal");
 		//forwardInput = Input.GetKey (KeyCode.LeftShift);
@@ -36,24 +34,22 @@ public class BroomPlayerController : MonoBehaviour {
 		//	controller.Move (TouchCoords.x * Player_right * speed*Time.deltaTime);
 
 			rBody.velocity = TouchCoords.y * Player_forward * speed;
-			rBody.velocity += TouchCoords.x * Player_right * speed; 
-
+			rBody.velocity += TouchCoords.x * Player_right * speed;
 		} else {
 			//TouchCoords = new Vector2();
 		}
 
-		Debug.Log ("Tranform.forward" + transform.forward+"Transform.right"+transform.right);
-
+		//Debug.Log ("Tranform.forward" + transform.forward+"Transform.right"+transform.right);
 		//Debug.Log(TouchCoords+" velocity = "+rBody.velocity);
 	}
+
 	// Update is called once per frame
 	void Update () {
 		GetInput ();
 		//Turn();
 	}
 
-	void FixedUpdate(){
+	void FixedUpdate () {
 		//Moveforward ();
 	}
-
 }

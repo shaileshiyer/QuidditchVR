@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RingLogic : MonoBehaviour {
     GameObject ring;
+	GameObject snitch;
+	SnitchLogic snitchController;
     byte counter = 1;
     Vector3[] positions = new Vector3[10];
 
@@ -22,6 +24,11 @@ public class RingLogic : MonoBehaviour {
         positions[7] = new Vector3(1f, 1f, -7f);
         positions[8] = new Vector3(1f, 1f, -8f);
         positions[9] = new Vector3(1f, 1f, -9f);
+
+		snitch = GameObject.FindGameObjectWithTag ("Snitch");
+		snitch.AddComponent<SnitchLogic>();
+		snitch.transform.localScale = new Vector3 (3, 3, 3);
+		snitch.transform.position = new Vector3 (2, 2, -15);
     }
 
     // Update is called once per frame
@@ -29,10 +36,17 @@ public class RingLogic : MonoBehaviour {
     }
 
 	void OnTriggerExit (Collider other) {
+		snitchController = snitch.GetComponent<SnitchLogic> ();
+		snitchController.Init ();
+
         if (other.gameObject == GameObject.FindGameObjectWithTag("Player")) {
             ring.transform.position = positions[counter];
             counter++;
         }
+
+		if (counter == 5) {
+			snitchController.Init ();
+		}
 
         if (counter == 10) {
             Destroy(ring);

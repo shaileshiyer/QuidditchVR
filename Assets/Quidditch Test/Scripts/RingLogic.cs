@@ -15,20 +15,18 @@ public class RingLogic : MonoBehaviour {
         ring = GameObject.FindGameObjectWithTag("Ring");
 
         // initiate all 10 (remainig 9) ring location here
-        positions[1] = new Vector3(1f, 1f, -1f);
-        positions[2] = new Vector3(1f, 1f, -2f);
-        positions[3] = new Vector3(1f, 1f, -3f);
-        positions[4] = new Vector3(1f, 1f, -4f);
-        positions[5] = new Vector3(1f, 1f, -5f);
-        positions[6] = new Vector3(1f, 1f, -6f);
-        positions[7] = new Vector3(1f, 1f, -7f);
-        positions[8] = new Vector3(1f, 1f, -8f);
-        positions[9] = new Vector3(1f, 1f, -9f);
+        positions[1] = new Vector3(1.9f, 4.83f, -1f);
+        positions[2] = new Vector3(1.9f, 4.83f, -2f);
+        positions[3] = new Vector3(1.9f, 4.83f, -3f);
+        positions[4] = new Vector3(1.9f, 4.83f, -4f);
+        positions[5] = new Vector3(1.9f, 4.83f, -5f);
+        positions[6] = new Vector3(1.9f, 4.83f, -6f);
+        positions[7] = new Vector3(1.9f, 4.83f, -7f);
+        positions[8] = new Vector3(1.9f, 4.83f, -8f);
+        positions[9] = new Vector3(1.9f, 4.83f, -9f);
 
 		snitch = GameObject.FindGameObjectWithTag ("Snitch");
 		snitch.AddComponent<SnitchLogic>();
-		snitch.transform.localScale = new Vector3 (3, 3, 3);
-		snitch.transform.position = new Vector3 (2, 2, -15);
     }
 
     // Update is called once per frame
@@ -39,7 +37,7 @@ public class RingLogic : MonoBehaviour {
 		snitchController = snitch.GetComponent<SnitchLogic> ();
 		snitchController.Init ();
 
-        if (other.gameObject == GameObject.FindGameObjectWithTag("Player")) {
+        if (other.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
             ring.transform.position = positions[counter];
             counter++;
         }
@@ -49,6 +47,7 @@ public class RingLogic : MonoBehaviour {
 		}
 
         if (counter == 10) {
+            Destroy(this);
             Destroy(ring);
         }
     }

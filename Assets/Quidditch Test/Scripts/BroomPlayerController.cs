@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class BroomPlayerController : MonoBehaviour {
 
-	public float speed = 40;
+	public float speed = 40f;
+    public float xMin = 0f;
+    public float xMax = 800f;
+    public float zMin = 0f;
+    public float zMax = 800f;
+    // height boundry
+    public float yMin = 0f;
+    public float yMax = 250f;
+
 	Vector2 TouchCoords;
 	CharacterController controller;
 	Rigidbody rBody;
@@ -18,38 +26,19 @@ public class BroomPlayerController : MonoBehaviour {
 		}
 	}
 
-	void GetInput () {
-		//heightInput = Input.GetAxis ("Vertical");
-		//turnInput = Input.GetAxis ("Horizontal");
-		//forwardInput = Input.GetKey (KeyCode.LeftShift);
+    // Get input and move in that direction
+    void GetInput () {
 		if (GvrControllerInput.IsTouching) {
 			TouchCoords = GvrControllerInput.TouchPosCentered;
-
-			//transform.forward = Camera.main.transform.forward;
-			//transform.right = Camera.main.transform.right;
-			Vector3 Player_forward = Camera.main.transform.forward;
+            Vector3 Player_forward = Camera.main.transform.forward;
 			Vector3 Player_right = Camera.main.transform.right;
-
-		//	controller.Move (TouchCoords.y * Player_forward * speed*Time.deltaTime);
-		//	controller.Move (TouchCoords.x * Player_right * speed*Time.deltaTime);
-
 			rBody.velocity = TouchCoords.y * Player_forward * speed;
 			rBody.velocity += TouchCoords.x * Player_right * speed;
-		} else {
-			//TouchCoords = new Vector2();
 		}
-
-		//Debug.Log ("Tranform.forward" + transform.forward+"Transform.right"+transform.right);
-		//Debug.Log(TouchCoords+" velocity = "+rBody.velocity);
 	}
 
 	// Update is called once per frame
 	void Update () {
 		GetInput ();
-		//Turn();
-	}
-
-	void FixedUpdate () {
-		//Moveforward ();
 	}
 }

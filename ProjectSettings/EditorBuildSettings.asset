@@ -6,8 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Quidditch Test/Scene/MenuLevel.unity
-    guid: 46ca756910dd64a4ba246eabfdee8fea
-  - enabled: 1
-    path: Assets/Quidditch Test/Scene/CastleTerrain.unity
-    guid: 10fe55acb9dfea24892e6190fd8914cd
+    path: Assets/Quidditch Test/Scene/MainLevel.unity
+    guid: 190fbb214e4760c40ab6177531730a33

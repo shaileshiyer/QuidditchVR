@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Quidditch Test/Scene/CastleTerrain.unity
     guid: 10fe55acb9dfea24892e6190fd8914cd
+  - enabled: 1
+    path: Assets/Quidditch Test/Scene/LoadScreen.unity
+    guid: 3521813d0e7b3a745a52b35039d09ac4

@@ -55,10 +55,9 @@ public class RingLogic : MonoBehaviour {
 
 	void OnTriggerExit (Collider other) {
 		snitchController = snitch.GetComponent<SnitchLogic> ();
-		snitchController.Init ();
 
         if (other.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
-            ring.transform.position = positions[counter];
+            ring.transform.position = positions[counter]/2;
             ring.transform.eulerAngles = rotations[counter];
             counter++;
         }

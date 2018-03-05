@@ -5,25 +5,19 @@ using UnityEngine.SceneManagement;
 public class MenuLevelScript : MonoBehaviour {
 
 	//Scene DestroyThisLevel;
-
+	public string LevelName;
 
 	//Makes this Object Eternal unless it is poisoned and destroyed on the inside.
 	public void Awake(){
 		DontDestroyOnLoad (this);
 	}
 
-	public void LoadLevel ( string LevelName )
+	void LoadLevel ()
     {
-
 		//DestroyThisLevel = SceneManager.GetActiveScene ();
-
 		SceneManager.LoadScene ("LoadScreen");
-
 		StartCoroutine (LoadNewScene(LevelName));
-
 		//StartCoroutine (UnloadPreviousScene ("MenuLevel"));
-
-
     }
 
 	/*
@@ -38,6 +32,9 @@ public class MenuLevelScript : MonoBehaviour {
 	}
 	*/
 
+	void OnTriggerEnter(Collider other) {
+		LoadLevel ();
+	}
 
 	//Co Routine for loading a new scene
 	IEnumerator LoadNewScene(string Level){

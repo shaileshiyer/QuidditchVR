@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class BroomPlayerController : MonoBehaviour {
 
-	public float speed = 40f;
-    public float xMin = 0f;
-    public float xMax = 800f;
-    public float zMin = 0f;
-    public float zMax = 800f;
-    // height boundry
-    public float yMin = 0f;
-    public float yMax = 250f;
+	public float speed = 80f;
+	private float timer;
 
 	Vector2 TouchCoords;
 	CharacterController controller;

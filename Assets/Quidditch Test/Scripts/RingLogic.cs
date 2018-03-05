@@ -53,10 +53,6 @@ public class RingLogic : MonoBehaviour {
 		snitch.AddComponent<SnitchLogic>();
     }
 
-    // Update is called once per frame
-    void Update () {
-    }
-
 	void OnTriggerExit (Collider other) {
 		snitchController = snitch.GetComponent<SnitchLogic> ();
 		snitchController.Init ();
@@ -69,9 +65,7 @@ public class RingLogic : MonoBehaviour {
 
 		if (counter == 5) {
 			snitchController.Init ();
-		}
-
-        if (counter == 12) {
+		} else if (counter == 11) {
             Destroy(this);
             Destroy(ring);
         }

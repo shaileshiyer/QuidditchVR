@@ -6,6 +6,7 @@ public class RingLogic : MonoBehaviour {
     GameObject ring;
 	GameObject snitch;
 	SnitchLogic snitchController;
+	BroomPlayerController broomcontroller;
     byte counter = 1;
     Vector3[] positions = new Vector3[11];
     Vector3[] rotations = new Vector3[11];
@@ -46,25 +47,34 @@ public class RingLogic : MonoBehaviour {
         positions[9] = new Vector3(965.03f, 291.72f, 1650.07f);
         rotations[9] = new Vector3(0f, -63.424f, 0f);
 
-        positions[10] = new Vector3(581.8f, 131.45f, 2600.8f);
+        positions[10] = new Vector3(581.8f, 260f, 2600.8f);
         rotations[10] = new Vector3(0f, 0f, 0f);
 
         snitch = GameObject.FindGameObjectWithTag ("Snitch");
-		snitch.AddComponent<SnitchLogic>();
+		snitchController = snitch.GetComponent<SnitchLogic> ();
+
+		broomcontroller = GameObject.FindGameObjectWithTag ("Player").GetComponent<BroomPlayerController>();
+
+
     }
 
 	void OnTriggerExit (Collider other) {
-		snitchController = snitch.GetComponent<SnitchLogic> ();
+		
 
-        if (other.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
-            ring.transform.position = positions[counter]/2;
-            ring.transform.eulerAngles = rotations[counter];
-            counter++;
-        }
+		if (other.gameObject == GameObject.FindGameObjectWithTag ("Player") && counter < 11) {
+			Debug.Log ("Counter : " + counter);
+			ring.transform.position = positions [counter] / 2;
+			ring.transform.eulerAngles = rotations [counter];
+			counter++;
+		} else if (other.gameObject == GameObject.FindGameObjectWithTag ("Player") && counter == 11) {
+			counter++;
+		}
 
-		if (counter == 5) {
+		if (counter == 2) {
 			snitchController.Init ();
-		} else if (counter == 11) {
+			broomcontroller.AllowSnitchCatch ();
+		} 
+		else if (counter == 12) {
             Destroy(this);
             Destroy(ring);
         }

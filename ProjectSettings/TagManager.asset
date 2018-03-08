@@ -9,9 +9,8 @@ TagManager:
   - RingCount
   - Help
   - SnitchCount
-  - Score
-  - Score2
-  - Score3
+  - GameTime
+  - SnitchInfo
   layers:
   - Default
   - TransparentFX

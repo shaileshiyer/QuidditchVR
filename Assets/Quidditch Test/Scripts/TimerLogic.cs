@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerLogic : MonoBehaviour {
-	public float LevelTime;
-	private float timer;
-	private float SnitchTime;
-	private bool SnitchCatched;
+	public float LevelTime = 0f;
+	private float timer = 0f;
+	private float SnitchTime = 0f;
+	private bool SnitchCatched = false;
 	private bool CountTime;
 	private Text showText;
 
@@ -23,7 +23,7 @@ public class TimerLogic : MonoBehaviour {
 		return SnitchCatched;
 	}
 
-	public float getSnitchCatchTIme () {
+	public float getSnitchCatchTime () {
 		return SnitchTime;
 	}
 
@@ -34,7 +34,6 @@ public class TimerLogic : MonoBehaviour {
 	public void SetSnitchValue () {
 		SnitchCatched = true;
 		SnitchTime = timer;
-
 	}
 
 	public float GetTime () {

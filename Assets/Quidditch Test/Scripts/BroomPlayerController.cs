@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,108 +6,77 @@ using UnityEngine.UI;
 
 public class BroomPlayerController : MonoBehaviour {
 
-	public float speed = 80f;
-	private float timer;
+	public float speed;
+	private float timer = 0f;
 	private bool checkforsnitch;
-	Vector2 TouchCoords;
-	CharacterController controller;
-	Rigidbody rBody;
-	GameObject snitch;
-	SnitchLogic snitchlog;
-	private Text help; 
+	private Vector2 TouchCoords;
+	private CharacterController controller;
+	private Rigidbody rBody;
+	private GameObject snitch;
+	private SnitchLogic snitchlog;
 	private bool snitchCatched;
-
+	private bool snitchTimerBool = true;
+	private float snitchTimer = 0f;
+	private Text help; 
 	private Text snitchCount; 
+	private TimerLogic timerlog;
+	private float dist = 0f;
+	float smalltime = 10f;
 
-	private AudioSource source;
-	public AudioClip SoundClip;
-	public TimerLogic timerlog;
-
-	private float dist;
-	float smalltime=10f;
-    // Use this for initialization
+	// Use this for initialization
 	void Start () {
-		
 		if (GetComponent<Rigidbody> ()) {
 			rBody = GetComponent <Rigidbody> ();
 		} else {
 			Debug.LogError ("Object needs to have RigidBody Attached with all the rotation constraints enabled");
 		}
+
 		snitch = GameObject.FindGameObjectWithTag("Snitch");
 		snitchlog = snitch.GetComponent<SnitchLogic>();
 		checkforsnitch = false;
 		snitchCatched = false;
-		source = GetComponent<AudioSource> ();
-		source.PlayOneShot (SoundClip,0.5f);
 
-		timerlog = GameObject.FindGameObjectWithTag("Finish").GetComponent<TimerLogic> ();
-
+		timerlog = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
 		help = GameObject.FindGameObjectWithTag("Help").GetComponent<Text>();
 		snitchCount = GameObject.FindGameObjectWithTag ("SnitchCount").GetComponent<Text> ();
 		help.text = "Find the Rings and the Snitch";
 	}
 
-    // Get input and move in that direction
-    void GetInput () {
-		
-		//Debug.Log ("Distance between player and snitch:" + dist);
-		if (GvrControllerInput.IsTouching) {
-			TouchCoords = GvrControllerInput.TouchPosCentered;
-			//Debug.Log (TouchCoords);
-			if (TouchCoords.y > -0.1	) {
-				Vector3 Player_forward = Camera.main.transform.forward;
-				Vector3 Player_right = Camera.main.transform.right;
-
-				rBody.velocity = TouchCoords.y * Player_forward * speed;
-				rBody.velocity += TouchCoords.x * Player_right * speed;
-			}
-		}
-
-
-	
-
-	}
-
-	public void CatchSnitch(){
-		Debug.Log ("Click HOraha hai");
-
-		if (checkforsnitch) {
-				if (dist < 20) {
-					Debug.Log ("Snitch is caught");
-					//snitchlog.Destroy ();
-					snitchCatched = true;
-					//TimerLogic timelog = GameObject.FindGameObjectWithTag ("Finish").GetComponent<Timer Logic> ();
-					timerlog.SetSnitchValue();
-					snitchlog.Destroy();
-					snitchCount.text = "1";
-				}
-
-
-		}
-
-	}
-
-	public void AllowSnitchCatch(){
+	public void AllowSnitchCatch() {
 		checkforsnitch = true;
-		help.text = "You can Catch the snitch";
-		smalltime = 10f;
 	}
+
 	// Update is called once per frame
-
-
 	void Update () {
 		if (snitch != null) {	
 			dist = Vector3.Distance (gameObject.transform.position, snitch.transform.position);
+			if (dist < 20) {
+				if (snitchTimerBool) {
+					snitchTimer += Time.deltaTime;
+				} else {
+					snitchTimerBool = true;					
+				}
+			} else {
+				snitchTimerBool = false;
+				snitchTimer = 0f;
+			}
+
+			if (snitchTimer > 1) {
+				snitchCatched = true;
+				timerlog.SetSnitchValue ();
+				snitchlog.Destroy ();
+				snitchCount.text = "1";
+			}
 		}
 		smalltime -= Time.deltaTime;
 		if (smalltime < 0)
 			help.text = "";
-		GetInput ();
+
+		transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
 
 		if (snitchCatched && GameObject.FindGameObjectWithTag ("Ring") == null) {
 			help.text = "Congrats! You have passed all rings and catched the snitch";
 			Time.timeScale = 0;
-			//TimerLogic tl = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
 			timerlog.EndGame ();
 		}
 	}

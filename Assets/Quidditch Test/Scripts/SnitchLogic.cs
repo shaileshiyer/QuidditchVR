@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SnitchLogic : MonoBehaviour {
-    bool CanMove;
 
 	[SerializeField]
 	private Vector3[] positions = new Vector3[10];
 
 	[SerializeField]
 	private UnityEngine.AI.NavMeshAgent agent;
-    // Use this for initialization
-    
+
 	[SerializeField]
 	private Transform player;
 
-	public float timerinterval = 5;
-	private float timer =0f;
+	public float timerinterval = 3;
+	private float timer = 0f;
 	private Animator anim;
 	private AudioSource asource;
-	void Start () {
+	private bool CanMove = false;
 
+	// Use this for initialization
+	void Start () {
 		if (agent == null)
 			agent = GetComponent <UnityEngine.AI.NavMeshAgent> ();
 
@@ -47,7 +47,6 @@ public class SnitchLogic : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        
 		if (CanMove) {
 			// the logic goes here
 			timer -=Time.deltaTime;
@@ -72,20 +71,7 @@ public class SnitchLogic : MonoBehaviour {
 		Destroy (gameObject);
 	}
 	private void RunawayFromPlayer(){
-		float furtherDistanceSofar = 0;
 		Vector3 runPosition = Vector3.zero;
-
-		//Check Each Point
-		/*
-		foreach(Vector3 point in positions){
-			float CurrentCheckDistance = Vector3.Distance (player.position, point/2);
-
-			if (CurrentCheckDistance > furtherDistanceSofar) {
-				furtherDistanceSofar = CurrentCheckDistance;
-				runPosition = point;
-			
-			}
-		}*/
 
 		int chance = Random.Range (0, 10);
 		runPosition = positions [chance];

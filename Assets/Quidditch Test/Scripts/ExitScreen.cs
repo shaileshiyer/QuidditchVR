@@ -4,44 +4,36 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ExitScreen : MonoBehaviour {
-	private Text TimeText, SnitchCatchText, SnitchCatchTimeText;
-	//private Text[] textarray;
+	private Text TimeText, SnitchInfoText;
+
 	private TimerLogic tl;
 	private bool snitchCaught;
-	private float min,sec;
+	private float min, sec;
 	private float smalltime;
-	private GameObject [] garray ;
+
 	// Use this for initialization
 	void Start () {
-		
 		tl = GameObject.FindGameObjectWithTag("Finish").GetComponent<TimerLogic>();
-		//GameObject [] garray = GameObject.FindGameObjectsWithTag("Score");
-		//garray = GameObject.FindGameObjectsWithTag("Finish"); 
-
-		TimeText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
-		SnitchCatchText = GameObject.FindGameObjectWithTag("Score2").GetComponent<Text>();
-		SnitchCatchTimeText = GameObject.FindGameObjectWithTag("Score3").GetComponent<Text>();
+		TimeText = GameObject.FindGameObjectWithTag("GameTime").GetComponent<Text>();
+		SnitchInfoText = GameObject.FindGameObjectWithTag("SnitchInfo").GetComponent<Text>();
 
 		sec = tl.getLevelTime ();
 		min = Mathf.Floor(getMins (sec));
 		sec = Mathf.Floor(getSecs (sec));
-		TimeText.text = min.ToString()+":"+sec.ToString();
+		TimeText.text = "Your Time: " + min.ToString()+":"+sec.ToString();
 		snitchCaught = tl.GetSnitchValue ();
-		SnitchCatchText.text = tl.GetSnitchValue().ToString();
-		if (snitchCaught == true) {
-			sec = tl.getSnitchCatchTIme();
+
+		if (snitchCaught) {
+			sec = tl.getSnitchCatchTime();
 			min = Mathf.Floor(getMins(sec));
 			sec = Mathf.Floor(getSecs(sec));
 
-			SnitchCatchTimeText.text = min.ToString()+":"+sec.ToString();		
-		} 
-		else {
-			
-			SnitchCatchTimeText.text = "--:--";
+			SnitchInfoText.text = "You Caught Snitch at: " + min.ToString()+":"+sec.ToString();		
+		} else {
+			SnitchInfoText.text = "You didn't catch the Snitch!";
 		}
+
 		smalltime = 60f;
-
-
 	}
 	
 	// Update is called once per frame
@@ -55,8 +47,6 @@ public class ExitScreen : MonoBehaviour {
 	void Update () {
 		smalltime -= Time.deltaTime;
 		if (smalltime < 0) {
-			//Destroy (garray[0]);
-			//Destroy (garray[1]);
 			SceneManager.LoadScene ("MenuLevel");
 		}
 	}

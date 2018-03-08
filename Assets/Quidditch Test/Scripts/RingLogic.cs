@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class RingLogic : MonoBehaviour {
+	
     GameObject ring;
 	GameObject snitch;
 	SnitchLogic snitchController;
 	BroomPlayerController broomcontroller;
-    public byte counter = 1;
+    private byte counter = 1;
     Vector3[] positions = new Vector3[11];
     Vector3[] rotations = new Vector3[11];
 	Text UICount;
-	int ringcount ;
+	int ringcount;
     // Use this for initialization
     void Start () {
         // get ring object
@@ -46,8 +48,6 @@ public class RingLogic : MonoBehaviour {
         positions[8] = new Vector3(758.5f, 34.5f, 2147.8f);
         rotations[8] = new Vector3(0f, 73.984f, 0f);
 
-
-
 		//positions[9] = new Vector3(2192.9f, 740f, 3760.6f);
 		positions[9] = new Vector3(1096f, 370f, 1880.3f);
 		rotations[9] = new Vector3(0f, -28.525f, 0f);
@@ -59,13 +59,9 @@ public class RingLogic : MonoBehaviour {
 		snitchController = snitch.GetComponent<SnitchLogic> ();
 
 		broomcontroller = GameObject.FindGameObjectWithTag ("Player").GetComponent<BroomPlayerController>();
-
-
     }
 
 	void OnTriggerExit (Collider other) {
-		
-
 		if (other.gameObject == GameObject.FindGameObjectWithTag ("Player") && counter < 11) {
 			Debug.Log ("Counter : " + counter);
 			ring.transform.position = positions[counter]/2;
@@ -75,7 +71,7 @@ public class RingLogic : MonoBehaviour {
 			counter++;
 		}
 
-		if (counter == 2) {
+		if (counter == 11) {
 			snitchController.Init ();
 			broomcontroller.AllowSnitchCatch ();
 		} 
@@ -83,6 +79,7 @@ public class RingLogic : MonoBehaviour {
             Destroy(this);
             Destroy(ring);
         }
+
 		ringcount = counter - 1;
 		UICount.text = ringcount.ToString();
     }

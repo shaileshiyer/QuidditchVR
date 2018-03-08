@@ -7224,6 +7224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   SoundClip: {fileID: 8300000, guid: baaf53a572708f84c800e9d6843dee92, type: 3}
+  timerlog: {fileID: 0}
 --- !u!82 &1525224150
 AudioSource:
   m_ObjectHideFlags: 0

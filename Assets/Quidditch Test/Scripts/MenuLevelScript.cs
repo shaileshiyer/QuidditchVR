@@ -6,8 +6,8 @@ public class MenuLevelScript : MonoBehaviour {
 
 	//Scene DestroyThisLevel;
 	public string LevelName;
-	private AudioSource source;
-	public AudioClip SoundClip;
+	//private AudioSource source;
+	//public AudioClip SoundClip;
 
 	//Makes this Object Eternal unless it is poisoned and destroyed on the inside.
 	public void Awake(){
@@ -15,8 +15,8 @@ public class MenuLevelScript : MonoBehaviour {
 	}
 
 	void Start() {
-		source = GetComponent <AudioSource> ();
-		source.PlayOneShot (SoundClip);
+		//source = GetComponent <AudioSource> ();
+		//source.PlayOneShot (SoundClip);
 	}
 
 	void LoadLevel ()

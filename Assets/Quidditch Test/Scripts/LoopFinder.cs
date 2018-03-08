@@ -13,14 +13,16 @@ public class LoopFinder : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		if (ring != null) {
 			find = ring;   
 		} else {
 			find = snitch;
 		}
-
-		heading = find.transform.position;
-		heading = heading - this.transform.position;
-		this.transform.rotation = Quaternion.LookRotation(heading);
+		if (find != null) {
+			heading = find.transform.position;
+			heading = heading - this.transform.position;
+			this.transform.rotation = Quaternion.LookRotation (heading);
+		}
 	}
 }

@@ -14,9 +14,9 @@ public class ExitScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		tl = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic>();
+		tl = GameObject.FindGameObjectWithTag("Finish").GetComponent<TimerLogic>();
 		//GameObject [] garray = GameObject.FindGameObjectsWithTag("Score");
-		garray = GameObject.FindGameObjectsWithTag ("Finish"); 
+		//garray = GameObject.FindGameObjectsWithTag("Finish"); 
 
 		TimeText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
 		SnitchCatchText = GameObject.FindGameObjectWithTag("Score2").GetComponent<Text>();
@@ -55,8 +55,8 @@ public class ExitScreen : MonoBehaviour {
 	void Update () {
 		smalltime -= Time.deltaTime;
 		if (smalltime < 0) {
-			Destroy (garray[0]);
-			Destroy (garray[1]);
+			//Destroy (garray[0]);
+			//Destroy (garray[1]);
 			SceneManager.LoadScene ("MenuLevel");
 		}
 	}

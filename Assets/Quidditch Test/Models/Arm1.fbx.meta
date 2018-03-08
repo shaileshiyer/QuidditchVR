@@ -15,6 +15,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Arm
+    4300002: Cylinder.004
   externalObjects: {}
   materials:
     importMaterials: 1

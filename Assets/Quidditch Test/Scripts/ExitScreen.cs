@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ExitScreen : MonoBehaviour {
@@ -8,15 +9,18 @@ public class ExitScreen : MonoBehaviour {
 	private TimerLogic tl;
 	private bool snitchCaught;
 	private float min,sec;
-
+	private float smalltime;
+	private GameObject [] garray ;
 	// Use this for initialization
 	void Start () {
+		
 		tl = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic>();
-		GameObject [] garray = GameObject.FindGameObjectsWithTag("Score");
+		//GameObject [] garray = GameObject.FindGameObjectsWithTag("Score");
+		garray = GameObject.FindGameObjectsWithTag ("Finish"); 
 
-		TimeText = garray[0].GetComponent<Text>();
-		SnitchCatchText = garray[1].GetComponent<Text>();
-		SnitchCatchTimeText = garray[2].GetComponent<Text>();
+		TimeText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+		SnitchCatchText = GameObject.FindGameObjectWithTag("Score2").GetComponent<Text>();
+		SnitchCatchTimeText = GameObject.FindGameObjectWithTag("Score3").GetComponent<Text>();
 
 		sec = tl.getLevelTime ();
 		min = Mathf.Floor(getMins (sec));
@@ -35,6 +39,8 @@ public class ExitScreen : MonoBehaviour {
 			
 			SnitchCatchTimeText.text = "--:--";
 		}
+		smalltime = 60f;
+
 
 	}
 	
@@ -47,7 +53,11 @@ public class ExitScreen : MonoBehaviour {
 		return times % 60;
 	}
 	void Update () {
-		
-
+		smalltime -= Time.deltaTime;
+		if (smalltime < 0) {
+			Destroy (garray[0]);
+			Destroy (garray[1]);
+			SceneManager.LoadScene ("MenuLevel");
+		}
 	}
 }

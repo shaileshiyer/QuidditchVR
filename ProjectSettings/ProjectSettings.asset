@@ -140,7 +140,7 @@ PlayerSettings:
     daydream:
       depthFormat: 0
       useSustainedPerformanceMode: 0
-      enableVideoLayer: 0
+      enableVideoLayer: 1
       useProtectedVideoMemory: 0
       minimumSupportedHeadTracking: 0
       maximumSupportedHeadTracking: 1
@@ -274,8 +274,8 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Enabled: 1
     m_Devices:
-    - daydream
     - cardboard
+    - daydream
   m_BuildTargetEnableVuforiaSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
@@ -670,5 +670,5 @@ PlayerSettings:
   projectName: Quiditch
   organizationId: gstgamedev
   cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 0
-  disableOldInputManagerSupport: 0
+  enableNativePlatformBackendsForNewInputSystem: 1
+  disableOldInputManagerSupport: 1

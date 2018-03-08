@@ -17,15 +17,16 @@ public class SnitchLogic : MonoBehaviour {
 
 	public float timerinterval = 5;
 	private float timer =0f;
-
-
+	private Animator anim;
+	private AudioSource asource;
 	void Start () {
 
 		if (agent == null)
 			agent = GetComponent <UnityEngine.AI.NavMeshAgent> ();
 
         player = GameObject.FindGameObjectWithTag ("Player").transform;
-
+		anim = GetComponent<Animator> ();
+		asource = GetComponent<AudioSource> ();
 		positions[0] = new Vector3(1684.4f, 140.41f, 1347.7f);
 		// initiate all 10 (remainig 9) ring location and rtation here
 		positions[1] = new Vector3(1621.8f, 581f, 1016f);
@@ -40,6 +41,8 @@ public class SnitchLogic : MonoBehaviour {
 		//positions[10] = new Vector3(581.8f, 131.45f, 2600.8f);
 
 		CanMove = false;
+		anim.SetBool ("Idle",false);
+		asource.Stop ();
 	}
 
 	// Update is called once per frame
@@ -59,7 +62,10 @@ public class SnitchLogic : MonoBehaviour {
     public void Init () { 
         CanMove = true;
 		agent.Warp (transform.position);
+
 		Debug.Log ("Snitch INitialized");
+		anim.SetBool("Idle",true);
+		asource.Play ();
     }
 
 	public void Destroy(){

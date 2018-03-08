@@ -10,6 +10,8 @@ TagManager:
   - Help
   - SnitchCount
   - Score
+  - Score2
+  - Score3
   layers:
   - Default
   - TransparentFX

@@ -75,7 +75,7 @@ public class RingLogic : MonoBehaviour {
 			counter++;
 		}
 
-		if (counter == 2) {
+		if (counter == 11) {
 			snitchController.Init ();
 			broomcontroller.AllowSnitchCatch ();
 		} 

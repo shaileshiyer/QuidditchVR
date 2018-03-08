@@ -20,8 +20,8 @@ public class BroomPlayerController : MonoBehaviour {
 
 	private Text snitchCount; 
 
-	//private AudioSource source;
-	//public AudioClip SoundClip;
+	private AudioSource source;
+	public AudioClip SoundClip;
 	private TimerLogic timerlog;
 
 	private float dist;
@@ -38,10 +38,10 @@ public class BroomPlayerController : MonoBehaviour {
 		snitchlog = snitch.GetComponent<SnitchLogic>();
 		checkforsnitch = false;
 		snitchCatched = false;
-		//source = GetComponent<AudioSource> ();
-		//source.PlayOneShot (SoundClip);
+		source = GetComponent<AudioSource> ();
+		source.PlayOneShot (SoundClip,0.5f);
 
-		timerlog = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
+		timerlog = GameObject.FindGameObjectWithTag("Finish").GetComponent<TimerLogic> ();
 		help = GameObject.FindGameObjectWithTag("Help").GetComponent<Text>();
 		snitchCount = GameObject.FindGameObjectWithTag ("SnitchCount").GetComponent<Text> ();
 		help.text = "Find the Rings and the Snitch";
@@ -77,7 +77,7 @@ public class BroomPlayerController : MonoBehaviour {
 					//snitchlog.Destroy ();
 					snitchCatched = true;
 					//TimerLogic tl = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
-					timerlog.SetSnitchValue ();
+					timerlog.SetSnitchValue();
 					snitchlog.Destroy ();
 					snitchCount.text = "1";
 				}
@@ -89,6 +89,8 @@ public class BroomPlayerController : MonoBehaviour {
 
 	public void AllowSnitchCatch(){
 		checkforsnitch = true;
+		help.text = "You can Catch the snitch";
+		smalltime = 10f;
 	}
 	// Update is called once per frame
 

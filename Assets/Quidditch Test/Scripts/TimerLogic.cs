@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimerLogic : MonoBehaviour {
 	public float LevelTime;
 	private float timer;
+	private float SnitchTime;
 	private bool SnitchCatched;
 	private bool CountTime;
 	private Text showText;
@@ -14,7 +15,7 @@ public class TimerLogic : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad (this);
 		CountTime = true;
-
+		SnitchTime = 0f;
 		showText = GameObject.FindGameObjectWithTag("Help").GetComponent<Text> ();
 	}
 
@@ -22,8 +23,18 @@ public class TimerLogic : MonoBehaviour {
 		return SnitchCatched;
 	}
 
+	public float getSnitchCatchTIme () {
+		return SnitchTime;
+	}
+
+	public float getLevelTime () {
+		return timer;
+	}
+
 	public void SetSnitchValue () {
 		SnitchCatched = true;
+		SnitchTime = timer;
+
 	}
 
 	public float GetTime () {

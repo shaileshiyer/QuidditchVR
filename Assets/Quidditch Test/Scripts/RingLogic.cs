@@ -22,10 +22,10 @@ public class RingLogic : MonoBehaviour {
         rotations[0] = new Vector3(0f, 99f, 0f);
 
         // initiate all 10 (remainig 9) ring location and rtation here
-        positions[1] = new Vector3(1621.8f, 581f, 1016f);
-        rotations[1] = new Vector3(0f, 84.191f, 0f);
+		positions[1] = new Vector3(1668.2f, 489.5f, 899.6f);
+        rotations[1] = new Vector3(0f, -8.878f, 0f);
 
-        positions[2] = new Vector3(390.9f, 161.6f, 383f);
+        positions[2] = new Vector3(390.9f, 219.9f, 383f);
         rotations[2] = new Vector3(0f, 84.191f, 0f);
 
         positions[3] = new Vector3(2301f, 422f, 327f);

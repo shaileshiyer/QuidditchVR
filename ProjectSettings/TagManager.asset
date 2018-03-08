@@ -9,6 +9,7 @@ TagManager:
   - RingCount
   - Help
   - SnitchCount
+  - Score
   layers:
   - Default
   - TransparentFX

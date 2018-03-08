@@ -3,7 +3,7 @@ guid: 8af3079b5c79b6b4c825cc71e71ef97d
 timeCreated: 1492253362
 licenseType: Store
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Box010
     100002: Box011
@@ -13,6 +13,9 @@ ModelImporter:
     100010: Box015
     100012: Box016
     100014: //RootNode
+    100016: Camera
+    100018: Lamp
+    100020: LowPolyGrass_01
     400000: Box010
     400002: Box011
     400004: Box012
@@ -21,6 +24,9 @@ ModelImporter:
     400010: Box015
     400012: Box016
     400014: //RootNode
+    400016: Camera
+    400018: Lamp
+    400020: LowPolyGrass_01
     2300000: Box010
     2300002: Box011
     2300004: Box012
@@ -29,6 +35,7 @@ ModelImporter:
     2300010: Box015
     2300012: Box016
     2300014: //RootNode
+    2300016: LowPolyGrass_01
     3300000: Box010
     3300002: Box011
     3300004: Box012
@@ -37,6 +44,7 @@ ModelImporter:
     3300010: Box015
     3300012: Box016
     3300014: //RootNode
+    3300016: LowPolyGrass_01
     4300000: Box010
     4300002: Box011
     4300004: Box012
@@ -46,10 +54,12 @@ ModelImporter:
     4300012: Box016
     4300014: LowPolyGrass_01
     9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -62,12 +72,14 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -75,13 +87,18 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -91,6 +108,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

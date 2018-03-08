@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Quidditch Test/Scene/MenuLevel.unity
     guid: 46ca756910dd64a4ba246eabfdee8fea
-  - enabled: 1
+  - enabled: 0
     path: Assets/Quidditch Test/Scene/LoadScreen.unity
     guid: 3521813d0e7b3a745a52b35039d09ac4
   - enabled: 1
     path: Assets/Quidditch Test/Scene/MainLevel.unity
     guid: 190fbb214e4760c40ab6177531730a33
+  - enabled: 0
+    path: Assets/Quidditch Test/Scene/ExitScreen.unity
+    guid: f91da8a0ee5ca724383bcf548a972c80

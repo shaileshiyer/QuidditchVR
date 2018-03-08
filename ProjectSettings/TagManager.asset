@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ring
   - Snitch
+  - RingCount
+  - Help
+  - SnitchCount
   layers:
   - Default
   - TransparentFX

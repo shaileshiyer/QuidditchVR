@@ -56,7 +56,7 @@ public class SnitchLogic : MonoBehaviour {
         }
 	}
 
-    public void Init () {
+    public void Init () { 
         CanMove = true;
 		agent.Warp (transform.position);
 		Debug.Log ("Snitch INitialized");

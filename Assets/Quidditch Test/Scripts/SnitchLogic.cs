@@ -58,7 +58,7 @@ public class SnitchLogic : MonoBehaviour {
         }
 	}
 
-    public void Init () { 
+    public void Init () {
         CanMove = true;
 		agent.Warp (transform.position);
 
@@ -67,10 +67,11 @@ public class SnitchLogic : MonoBehaviour {
 		asource.Play ();
     }
 
-	public void Destroy(){
+	public void Destroy () {
 		Destroy (gameObject);
 	}
-	private void RunawayFromPlayer(){
+
+	private void RunawayFromPlayer () {
 		Vector3 runPosition = Vector3.zero;
 
 		int chance = Random.Range (0, 10);

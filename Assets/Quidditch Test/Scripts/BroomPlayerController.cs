@@ -19,6 +19,7 @@ public class BroomPlayerController : MonoBehaviour {
 	private float snitchTimer = 0f;
 	private Text help; 
 	private Text snitchCount; 
+	private GameObject finish;
 	private TimerLogic timerlog;
 	private float dist = 0f;
 	float smalltime = 10f;
@@ -36,7 +37,8 @@ public class BroomPlayerController : MonoBehaviour {
 		checkforsnitch = false;
 		snitchCatched = false;
 
-		timerlog = GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
+		finish = GameObject.FindGameObjectWithTag ("Finish");
+		timerlog = finish.GetComponent<TimerLogic> ();
 		help = GameObject.FindGameObjectWithTag("Help").GetComponent<Text>();
 		snitchCount = GameObject.FindGameObjectWithTag ("SnitchCount").GetComponent<Text> ();
 		help.text = "Find the Rings and the Snitch";
@@ -63,6 +65,7 @@ public class BroomPlayerController : MonoBehaviour {
 
 			if (snitchTimer > 1) {
 				snitchCatched = true;
+				snitch = null;
 				timerlog.SetSnitchValue ();
 				snitchlog.Destroy ();
 				snitchCount.text = "1";

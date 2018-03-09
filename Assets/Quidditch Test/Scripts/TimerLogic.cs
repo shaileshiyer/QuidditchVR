@@ -17,6 +17,7 @@ public class TimerLogic : MonoBehaviour {
 		CountTime = true;
 		SnitchTime = 0f;
 		showText = GameObject.FindGameObjectWithTag("Help").GetComponent<Text> ();
+		timer = LevelTime;
 	}
 
 	public bool GetSnitchValue () {
@@ -28,34 +29,36 @@ public class TimerLogic : MonoBehaviour {
 	}
 
 	public float getLevelTime () {
-		return timer;
+		return LevelTime - timer;
 	}
 
 	public void SetSnitchValue () {
 		SnitchCatched = true;
-		SnitchTime = timer;
+		SnitchTime = LevelTime - timer;
 	}
 
 	public float GetTime () {
-		return timer;
+		return LevelTime - timer;
 	}
 
 	public void EndGame () {
-		CountTime = false;
-		//yield return new WaitForSeconds (5);
+		Time.timeScale = 1;
+		StartCoroutine (LoadExitScreen ());
+	}
+
+	IEnumerator LoadExitScreen () {
+		yield return new WaitForSeconds(5);
+		Debug.Log ("LOAD EXIT");
 		SceneManager.LoadScene ("ExitScreen");
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (CountTime) {
-			if (timer > LevelTime) {
-				CountTime = false;
-				showText.text = "Time Over!";
-				EndGame ();
-			} else {
-				timer += Time.deltaTime;
-			}
+		timer -= Time.deltaTime;
+
+		if (timer<0f) {
+			showText.text = "Time Over!";
+			EndGame ();
 		}
 	}
 }

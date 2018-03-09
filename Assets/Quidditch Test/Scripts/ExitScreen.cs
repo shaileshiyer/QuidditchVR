@@ -9,7 +9,7 @@ public class ExitScreen : MonoBehaviour {
 	private TimerLogic tl;
 	private bool snitchCaught;
 	private float min, sec;
-	private float smalltime;
+	private float smalltime = 600f;
 
 	// Use this for initialization
 	void Start () {
@@ -28,12 +28,13 @@ public class ExitScreen : MonoBehaviour {
 			min = Mathf.Floor(getMins(sec));
 			sec = Mathf.Floor(getSecs(sec));
 
-			SnitchInfoText.text = "You Caught Snitch at: " + min.ToString()+":"+sec.ToString();		
+			SnitchInfoText.text = "Caught Snitch at: " + min.ToString()+":"+sec.ToString();		
 		} else {
 			SnitchInfoText.text = "You didn't catch the Snitch!";
 		}
 
-		smalltime = 60f;
+		Destroy (tl);
+		StartCoroutine (LoadMenu ());
 	}
 	
 	// Update is called once per frame
@@ -44,10 +45,19 @@ public class ExitScreen : MonoBehaviour {
 	private float getSecs(float times){
 		return times % 60;
 	}
-	void Update () {
-		smalltime -= Time.deltaTime;
+
+	void Update () {}
+	/*void Update () {
+		smalltime = smalltime - Time.deltaTime;
+		Debug.Log (smalltime);
 		if (smalltime < 0) {
 			SceneManager.LoadScene ("MenuLevel");
 		}
+	}*/
+
+	IEnumerator LoadMenu () {
+		Debug.Log ("i am here");
+		yield return new WaitForSeconds (5);
+		SceneManager.LoadScene ("MenuLevel");
 	}
 }

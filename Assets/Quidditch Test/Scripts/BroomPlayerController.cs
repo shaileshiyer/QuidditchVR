@@ -9,7 +9,7 @@ public class BroomPlayerController : MonoBehaviour {
 	public float speed;
 	private float timer = 0f;
 	private bool checkforsnitch;
-	private Vector2 TouchCoords;
+	//private Vector2 TouchCoords;
 	private CharacterController controller;
 	private Rigidbody rBody;
 	private GameObject snitch;
@@ -20,7 +20,7 @@ public class BroomPlayerController : MonoBehaviour {
 	private Text help; 
 	private Text snitchCount; 
 	private GameObject finish;
-	private TimerLogic timerlog;
+	private TimerLogic timerlog= new TimerLogic();
 	private float dist = 0f;
 	float smalltime = 10f;
 
@@ -37,17 +37,26 @@ public class BroomPlayerController : MonoBehaviour {
 		checkforsnitch = false;
 		snitchCatched = false;
 
-		finish = GameObject.FindGameObjectWithTag ("Finish");
-		timerlog = finish.GetComponent<TimerLogic> ();
+
 		help = GameObject.FindGameObjectWithTag("Help").GetComponent<Text>();
 		snitchCount = GameObject.FindGameObjectWithTag ("SnitchCount").GetComponent<Text> ();
 		help.text = "Find the Rings and the Snitch";
+
+		finish = GameObject.FindGameObjectWithTag ("Finish");
+		timerlog = finish.GetComponent<TimerLogic> ();
 	}
 
 	public void AllowSnitchCatch() {
 		checkforsnitch = true;
+		help.text = "You can now catch the Snitch";
+		smalltime = 10f;
 	}
 
+	void FixedUpdate(){
+		
+		Vector3 Player_forward = Camera.main.transform.forward;
+		rBody.velocity = Player_forward * speed;
+	}
 	// Update is called once per frame
 	void Update () {
 		if (snitch != null) {	
@@ -63,7 +72,7 @@ public class BroomPlayerController : MonoBehaviour {
 				snitchTimer = 0f;
 			}
 
-			if (snitchTimer > 1) {
+			if (snitchTimer > 2) {
 				snitchCatched = true;
 				snitch = null;
 				timerlog.SetSnitchValue ();
@@ -72,15 +81,19 @@ public class BroomPlayerController : MonoBehaviour {
 			}
 		}
 		smalltime -= Time.deltaTime;
-		if (smalltime < 0)
+		if (smalltime < 0) {
 			help.text = "";
+		}
 
-		transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
+		//transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
+	
 
 		if (snitchCatched && GameObject.FindGameObjectWithTag ("Ring") == null) {
 			help.text = "Congrats! You have passed all rings and catched the snitch";
 			Time.timeScale = 0;
+			rBody.velocity = Vector3.zero;
 			timerlog.EndGame ();
 		}
+			
 	}
 }

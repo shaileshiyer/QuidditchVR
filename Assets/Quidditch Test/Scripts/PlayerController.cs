@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
+		Vector3 Player_forward = Camera.main.transform.forward;
+
+		rBody.velocity =  Time.deltaTime*50*Player_forward * speed;
+
+		//transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
 	}
 }

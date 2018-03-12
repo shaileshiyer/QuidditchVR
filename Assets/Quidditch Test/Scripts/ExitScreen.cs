@@ -10,30 +10,38 @@ public class ExitScreen : MonoBehaviour {
 	private bool snitchCaught;
 	private float min, sec;
 	private float smalltime = 600f;
+	int ringcount;
 
 	// Use this for initialization
 	void Start () {
-		tl = GameObject.FindGameObjectWithTag("Finish").GetComponent<TimerLogic>();
+		GameObject T1Obj = GameObject.FindGameObjectWithTag ("Finish");
+		tl = T1Obj.GetComponent<TimerLogic>();
 		TimeText = GameObject.FindGameObjectWithTag("GameTime").GetComponent<Text>();
 		SnitchInfoText = GameObject.FindGameObjectWithTag("SnitchInfo").GetComponent<Text>();
+		ringcount = tl.getRingCount();
+		if ( ringcount== 11) {
+			
+			sec = tl.getLevelTime ();
+			min = Mathf.Floor (getMins (sec));
+			sec = Mathf.Floor (getSecs (sec));
 
-		sec = tl.getLevelTime ();
-		min = Mathf.Floor(getMins (sec));
-		sec = Mathf.Floor(getSecs (sec));
-		TimeText.text = "Your Time: " + min.ToString()+":"+sec.ToString();
-		snitchCaught = tl.GetSnitchValue ();
+			TimeText.text = "Your Time: " + min.ToString () + ":" + sec.ToString ();
+			snitchCaught = tl.GetSnitchValue ();
 
-		if (snitchCaught) {
-			sec = tl.getSnitchCatchTime();
-			min = Mathf.Floor(getMins(sec));
-			sec = Mathf.Floor(getSecs(sec));
+			if (snitchCaught) {
+				sec = tl.getSnitchCatchTime ();
+				min = Mathf.Floor (getMins (sec));
+				sec = Mathf.Floor (getSecs (sec));
 
-			SnitchInfoText.text = "Caught Snitch at: " + min.ToString()+":"+sec.ToString();		
+				SnitchInfoText.text = "Caught Snitch at: " + min.ToString () + ":" + sec.ToString ();		
+			} else {
+				SnitchInfoText.text = "You didn't catch the Snitch!";
+			}
 		} else {
-			SnitchInfoText.text = "You didn't catch the Snitch!";
+			TimeText.text = "You have caught "+ringcount+" out of 11 rings";
+			SnitchInfoText.text = "";
 		}
-
-		Destroy (tl);
+		Destroy (T1Obj);
 		StartCoroutine (LoadMenu ());
 	}
 	
@@ -57,7 +65,7 @@ public class ExitScreen : MonoBehaviour {
 
 	IEnumerator LoadMenu () {
 		Debug.Log ("i am here");
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (30);
 		SceneManager.LoadScene ("MenuLevel");
 	}
 }

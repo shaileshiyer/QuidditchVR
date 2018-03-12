@@ -10,6 +10,7 @@ public class TimerLogic : MonoBehaviour {
 	private bool SnitchCatched = false;
 	private bool CountTime;
 	private Text showText;
+	private int ringCount;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,14 @@ public class TimerLogic : MonoBehaviour {
 		return LevelTime - timer;
 	}
 
+	public void setRingCount (int currentoCount){
+		ringCount = currentoCount; 
+	
+	}
+
+	public int getRingCount(){
+		return ringCount;
+	}
 	public void EndGame () {
 		Time.timeScale = 1;
 		StartCoroutine (LoadExitScreen ());

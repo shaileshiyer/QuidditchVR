@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerLogic : MonoBehaviour {
-	public float LevelTime = 0f;
+	public float LevelTime = 480f;
 	private float timer = 0f;
 	private float SnitchTime = 0f;
 	private bool SnitchCatched = false;
@@ -42,9 +42,8 @@ public class TimerLogic : MonoBehaviour {
 		return LevelTime - timer;
 	}
 
-	public void setRingCount (int currentoCount){
-		ringCount = currentoCount; 
-	
+	public void setRingCount (int currentoCount) {
+		ringCount = currentoCount;
 	}
 
 	public int getRingCount(){

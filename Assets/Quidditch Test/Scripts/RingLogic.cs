@@ -15,6 +15,7 @@ public class RingLogic : MonoBehaviour {
 	Text UICount;
 	int ringcount;
 
+    GameObject finish;
 	TimerLogic timerlogic;
 	//AudioSource ting;
 
@@ -23,8 +24,14 @@ public class RingLogic : MonoBehaviour {
         // get ring object
         ring = GameObject.FindGameObjectWithTag("Ring");
 		UICount = GameObject.FindGameObjectWithTag ("RingCount").GetComponent<Text>();
-		//ting.Stop ();
 
+        snitch = GameObject.FindGameObjectWithTag("Snitch");
+        snitchController = snitch.GetComponent<SnitchLogic>();
+
+        broomcontroller = GameObject.FindGameObjectWithTag("Player").GetComponent<BroomPlayerController>();
+        finish = GameObject.FindGameObjectWithTag("Finish");
+        finish.AddComponent<TimerLogic>();
+        timerlogic = finish.GetComponent<TimerLogic>();
 
         positions[0] = new Vector3(1684.4f, 140.41f, 1347.7f);
         rotations[0] = new Vector3(0f, 99f, 0f);
@@ -60,12 +67,6 @@ public class RingLogic : MonoBehaviour {
 
         positions[10] = new Vector3(581.8f, 260f, 2600.8f);
         rotations[10] = new Vector3(0f, 0f, 0f);
-
-        snitch = GameObject.FindGameObjectWithTag ("Snitch");
-		snitchController = snitch.GetComponent<SnitchLogic> ();
-
-		broomcontroller = GameObject.FindGameObjectWithTag ("Player").GetComponent<BroomPlayerController>();
-		timerlogic= GameObject.FindGameObjectWithTag ("Finish").GetComponent<TimerLogic> ();
     }
 
 	void OnTriggerExit (Collider other) {
@@ -75,7 +76,7 @@ public class RingLogic : MonoBehaviour {
 			//ting.Play();
 			ring.transform.position = positions[counter]/2;
 			ring.transform.eulerAngles = rotations [counter];
-			timerlogic.setRingCount (counter - 1);
+			timerlogic.setRingCount(counter - 1);
 			counter++;
 		} else if (other.gameObject == GameObject.FindGameObjectWithTag ("Player") && counter == 11) {
 			counter++;

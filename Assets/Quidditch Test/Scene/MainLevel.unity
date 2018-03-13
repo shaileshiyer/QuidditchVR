@@ -2215,7 +2215,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 518368528}
-  - component: {fileID: 518368527}
   m_Layer: 0
   m_Name: FinishGame
   m_TagString: Finish
@@ -2223,18 +2222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &518368527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 518368526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49597e9a55b8e0c469b524beb5122b9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelTime: 480
 --- !u!4 &518368528
 Transform:
   m_ObjectHideFlags: 0

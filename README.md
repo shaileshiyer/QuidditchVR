@@ -31,6 +31,10 @@ Level Design and Programming By:
 Click on the Image below to go to the Youtube Video.
 [![Watch the video](https://img.youtube.com/vi/Dk-NKZrjl8E/maxresdefault.jpg)](https://youtu.be/Dk-NKZrjl8E)
 
+## Build
+
+Get the Build of the app [here](https://github.com/shaileshiyer/QuidditchVR/releases/tag/v1.0).
+
 ## Setup
 
 1. Clone the project to your local device.
